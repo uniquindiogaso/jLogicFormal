@@ -18,6 +18,11 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import sun.awt.image.codec.JPEGImageEncoderImpl;
 
+/**
+ * 
+ * @author gusta
+ * @see http://www.java2s.com/Code/Java/Advanced-Graphics/Tree.htm
+ */
 public class Nodo extends JPanel {
 
     ArrayList<String> subFormulas = new ArrayList<>();
