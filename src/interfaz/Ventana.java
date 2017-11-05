@@ -11,6 +11,7 @@ import logica.Parser;
 import java.awt.Color;
 import java.awt.KeyEventDispatcher;
 import java.awt.KeyboardFocusManager;
+import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -37,10 +38,11 @@ public class Ventana extends javax.swing.JFrame {
     private AnalizadorProposicional analizador;
 
     public Ventana() {
-        initComponents();        
+        initComponents();
         setLocationRelativeTo(null);
 
-        //escucharTeclado();
+        validarTeclado();
+        
     }
 
     /**
@@ -156,6 +158,11 @@ public class Ventana extends javax.swing.JFrame {
         jButton26.setText("()V()");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                formKeyReleased(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setText("Fórmula");
@@ -405,11 +412,21 @@ public class Ventana extends javax.swing.JFrame {
         jMenuItem3.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jMenuItem3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/icons/analizar48.png"))); // NOI18N
         jMenuItem3.setText("Analizar");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem3);
 
         jMenuItem4.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jMenuItem4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/icons/salir48.png"))); // NOI18N
         jMenuItem4.setText("Salir");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem4);
 
         jMenuBar1.add(jMenu1);
@@ -465,6 +482,11 @@ public class Ventana extends javax.swing.JFrame {
         jMenuItem2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/icons/acerca48.png"))); // NOI18N
         jMenuItem2.setText("Acerca de");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem2);
 
         jMenuBar1.add(jMenu2);
@@ -616,7 +638,7 @@ public class Ventana extends javax.swing.JFrame {
 
     private void cVisorFormulaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cVisorFormulaKeyReleased
         //noRecibirLetras(evt);
-        escribir(evt);
+        //escribir(evt);
     }//GEN-LAST:event_cVisorFormulaKeyReleased
 
     private void btParentesisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btParentesisActionPerformed
@@ -628,11 +650,7 @@ public class Ventana extends javax.swing.JFrame {
     }//GEN-LAST:event_btCondicionalActionPerformed
 
     private void btAnalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAnalizarActionPerformed
-
         analizarFormulas();
-        
-
-
     }//GEN-LAST:event_btAnalizarActionPerformed
 
     private void menuEj1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuEj1ActionPerformed
@@ -704,8 +722,24 @@ public class Ventana extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void btConjuntoFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btConjuntoFActionPerformed
-         escribir(btConjuntoF.getText());
+        escribir(btConjuntoF.getText());
     }//GEN-LAST:event_btConjuntoFActionPerformed
+
+    private void formKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formKeyReleased
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        analizarFormulas();
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        devsInfo();
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAnalizar;
@@ -778,9 +812,15 @@ public class Ventana extends javax.swing.JFrame {
     private void escribir(java.awt.event.KeyEvent evt) {
         //97 = a q= 113 z=122
         String form = cVisorFormula.getText();
-        if (evt.getKeyCode() >= 97 && evt.getKeyCode() <= 122) {
+        System.out.println("Tecla Presionada ..." + evt.getKeyCode());
+//        if (evt.getKeyCode() >= 65 && evt.getKeyCode() <= 90) {
+//            escribir(String.valueOf(evt.getKeyChar()));
+//        }else{
+//            evt.consume();
+//        }
 
-            escribir(String.valueOf(evt.getKeyChar()));
+        if (evt.getKeyCode() < 65 && evt.getKeyChar() > 90) {
+            evt.consume();
         }
     }
 
@@ -788,18 +828,16 @@ public class Ventana extends javax.swing.JFrame {
      * @see
      * http://www.javacreed.com/how-to-capture-key-events-with-jframe-or-window/
      */
-    private void escucharTeclado() {
-        KeyEventDispatcher keyEventDispatcher = new KeyEventDispatcher() {
+    private void validarTeclado() {
+        cVisorFormula.addKeyListener(new KeyAdapter() {
             @Override
-            public boolean dispatchKeyEvent(final KeyEvent e) {
-                if (e.getID() == KeyEvent.KEY_TYPED) {
-                    escribir(e);
+            public void keyTyped(KeyEvent e) {               
+                int c = e.getKeyChar();
+                if (c < 97 || c > 122) {
+                    e.consume();
                 }
-                // Pass the KeyEvent to the next KeyEventDispatcher in the chain
-                return false;
             }
-        };
-        KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(keyEventDispatcher);
+        });
     }
 
     private void analizarFormulas() {
@@ -815,13 +853,13 @@ public class Ventana extends javax.swing.JFrame {
             if (Parser.getAtomos().size() >= 2) {
                 boolean sa = Parser.verSatisfacibilidad(Parser.getTabla());
                 if (sa) {
-                    estad[3] = "Es satisfacible";                    
+                    estad[3] = "Es satisfacible";
                     dibujarArbol();
                 } else {
                     estad[3] = "No es satisfacible";
                 }
-                
-                imprimirTablaConsola();                
+
+                imprimirTablaConsola();
                 estadistica();
             } else {
                 JOptionPane.showMessageDialog(this, "Debe Ingresar Mínimo 5\nFormas Proposicionales Atómicas");
@@ -917,6 +955,19 @@ public class Ventana extends javax.swing.JFrame {
                     .getName()).log(Level.SEVERE, null, ex);
         }
 
+    }
+    
+    
+        /**
+     * Informacion sobre los creadores del Software
+     */
+    private void devsInfo() {
+        JOptionPane.showMessageDialog(null, "Materia: Lógica Formal - Alejandra Pulgarin\n"
+                + "Universidad del Quindio 2017\n"
+                + "Devs:\n"
+                + "Laura Rúa\n"
+                + "Carlos Toro\n"
+                + "Gustavo Salgado");
     }
 
 }

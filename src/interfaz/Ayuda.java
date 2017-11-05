@@ -86,13 +86,13 @@ public class Ayuda extends javax.swing.JFrame {
         String menu = evt.getPath().getLastPathComponent().toString();
         
         if ("Ventana Principal".equalsIgnoreCase(menu)){
-           lAyuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/ayuda/demo.png")));
+           lAyuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/ayuda/principal.jpeg")));
        }else if ("Ingreso Fórmula".equalsIgnoreCase(menu)){
-           lAyuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/ayuda/demo.png")));
+           lAyuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/ayuda/formula.jpeg")));
        }else if ("Satisfacibilidad".equalsIgnoreCase(menu)){
            lAyuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/ayuda/demo.png")));
        }else if ("Tautología".equalsIgnoreCase(menu)){
-           lAyuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/ayuda/demo.png")));
+           lAyuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/ayuda/tautologia.jpeg")));
        }
         
     }//GEN-LAST:event_menuManualValueChanged
