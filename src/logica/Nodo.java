@@ -1,4 +1,4 @@
-package Logica;
+package logica;
 
 import com.sun.image.codec.jpeg.ImageFormatException;
 import java.awt.Color;

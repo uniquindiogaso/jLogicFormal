@@ -3,12 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package UI;
+package interfaz;
 
-import Logica.AnalizadorProposicional;
-import Logica.Nodo;
-
-import Logica.Parser;
+import logica.AnalizadorProposicional;
+import logica.Nodo;
+import logica.Parser;
 import java.awt.Color;
 import java.awt.KeyEventDispatcher;
 import java.awt.KeyboardFocusManager;
@@ -98,6 +97,7 @@ public class Ventana extends javax.swing.JFrame {
         btAnalizar1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        btConjuntoF = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
@@ -388,6 +388,17 @@ public class Ventana extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel3.setText("Formas Atómicas");
 
+        btConjuntoF.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        btConjuntoF.setText(",");
+        btConjuntoF.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btConjuntoF.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        btConjuntoF.setPreferredSize(new java.awt.Dimension(51, 30));
+        btConjuntoF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btConjuntoFActionPerformed(evt);
+            }
+        });
+
         jMenu1.setText("Archivo");
         jMenu1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
@@ -439,11 +450,18 @@ public class Ventana extends javax.swing.JFrame {
 
         jMenu2.add(jMenu3);
 
+        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, 0));
         jMenuItem1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/icons/ayuda48.png"))); // NOI18N
         jMenuItem1.setText("Manual");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem1);
 
+        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F2, 0));
         jMenuItem2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/icons/acerca48.png"))); // NOI18N
         jMenuItem2.setText("Acerca de");
@@ -475,7 +493,8 @@ public class Ventana extends javax.swing.JFrame {
                                 .addGroup(layout.createSequentialGroup()
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(btY, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(btBiCondicional, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addComponent(btBiCondicional, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(btConjuntoF, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(btO, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -564,7 +583,9 @@ public class Ventana extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(btAnalizar1)
-                                    .addComponent(btAnalizar))))))
+                                    .addComponent(btAnalizar))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btConjuntoF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(8, 8, 8)
                 .addComponent(jLEstad)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -678,11 +699,20 @@ public class Ventana extends javax.swing.JFrame {
         tablaVerdad.setModel(new DefaultTableModel());
     }//GEN-LAST:event_btAnalizar1ActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        new Ayuda().setVisible(true);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void btConjuntoFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btConjuntoFActionPerformed
+         escribir(btConjuntoF.getText());
+    }//GEN-LAST:event_btConjuntoFActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAnalizar;
     private javax.swing.JButton btAnalizar1;
     private javax.swing.JButton btBiCondicional;
     private javax.swing.JButton btCondicional;
+    private javax.swing.JButton btConjuntoF;
     private javax.swing.JButton btNegacion;
     private javax.swing.JButton btO;
     private javax.swing.JButton btParentesis;
