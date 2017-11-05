@@ -435,7 +435,7 @@ public class Parser {
                             operarCondicional(tabla, i, j, aux4, aux3);
                         } else if (auxiliarOpe == '^') {
                             operarConjuncion(tabla, i, j, aux4, aux3);
-                        } else if (auxiliarOpe == 'v') {
+                        } else if (auxiliarOpe == 'V') {
                             operarDisyuncion(tabla, i, j, aux4, aux3);
                         } else if (auxiliarOpe == '\u2194') {
                             operarBicondicional(tabla, i, j, aux4, aux3);
