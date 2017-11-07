@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package interfaz;
 
 import logica.AnalizadorProposicional;
@@ -22,27 +17,45 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.text.BadLocationException;
 
 /**
+ * La interfaz principal de la aplicación donde esta para ingresar la formula,
+ * observar la tabla de verdad y el tableaux
  *
- * @author gusta
+ * @author Carlos Toro, Gustavo Salgado y Laura Rúa
+ * @version 1.0
  */
 public class Ventana extends javax.swing.JFrame {
 
     /**
-     * Creates new form Ventana
+     * Cadena que guarda la formula ingresada
      */
     public String formula = "";
+    /**
+     * Arreglo de posiciones que permite generar las estadistica de la formula 
+     */
     Object[] estad = new Object[4];
+    /**
+     * Arraylist de la formula
+     */
     ArrayList<String> formulas = new ArrayList<>();
 
+    /**
+     * Variable tipo nodo del arbol
+     */
     private Nodo arbolS;
+    /**
+     * Instancia del analizador proposicional
+     */
     private AnalizadorProposicional analizador;
 
+    /**
+     * Metodo constructor de la ventana
+     */
     public Ventana() {
         initComponents();
         setLocationRelativeTo(null);
 
         validarTeclado();
-        
+
     }
 
     /**
@@ -801,6 +814,10 @@ public class Ventana extends javax.swing.JFrame {
     private javax.swing.JTable tablaVerdad;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     * Metodo que permite escribir e identificar la ubicacion de la letra presionada
+     * @param valor cadena que se va a escribir
+     */
     private void escribir(String valor) {
         try {
             cVisorFormula.getDocument().insertString(cVisorFormula.getCaretPosition(), valor, null);
@@ -809,6 +826,10 @@ public class Ventana extends javax.swing.JFrame {
         }
     }
 
+    /**
+     * Metodo que permite escribir e identificar la letra presionada
+     * @param evt evento del teclado
+     */
     private void escribir(java.awt.event.KeyEvent evt) {
         //97 = a q= 113 z=122
         String form = cVisorFormula.getText();
@@ -825,13 +846,14 @@ public class Ventana extends javax.swing.JFrame {
     }
 
     /**
+     * Metodo que valida el texto ingresado, y  limita lo que se desea ingresar
      * @see
      * http://www.javacreed.com/how-to-capture-key-events-with-jframe-or-window/
      */
     private void validarTeclado() {
         cVisorFormula.addKeyListener(new KeyAdapter() {
             @Override
-            public void keyTyped(KeyEvent e) {               
+            public void keyTyped(KeyEvent e) {
                 int c = e.getKeyChar();
                 if (c < 97 || c > 122) {
                     e.consume();
@@ -840,6 +862,9 @@ public class Ventana extends javax.swing.JFrame {
         });
     }
 
+    /**
+     * Metodo que analiza la formula que se le ingresa a traves del textArea
+     */
     private void analizarFormulas() {
         formulas.clear();
         Parser.hallarFormulas(cVisorFormula.getText().replace(" ", ""));
@@ -871,6 +896,9 @@ public class Ventana extends javax.swing.JFrame {
         }
     }
 
+    /**
+     * Metodo que imprima la tabla de verdad de la formula en la consola
+     */
     private void imprimirTablaConsola() {
         String aux = "";
         for (int i = 0; i < Parser.getTabla().length; i++) {
@@ -916,6 +944,9 @@ public class Ventana extends javax.swing.JFrame {
         tablaVerdad.setModel(model);
     }
 
+    /**
+     * Metodo que recopila la informacion de la formula guardada en un arreglo y la muestra en la interfaz
+     */
     public void estadistica() {
         char op = Parser.buscarOpPrincipal(Parser.getFormulas().get(0));
         estad[0] = "Operador principal: " + op;
@@ -926,6 +957,9 @@ public class Ventana extends javax.swing.JFrame {
 
     }
 
+    /**
+     * Metodo que permite dibujar el arbol
+     */
     private void dibujarArbol() {
         try {
             paint(getGraphics());
@@ -956,9 +990,8 @@ public class Ventana extends javax.swing.JFrame {
         }
 
     }
-    
-    
-        /**
+
+    /**
      * Informacion sobre los creadores del Software
      */
     private void devsInfo() {

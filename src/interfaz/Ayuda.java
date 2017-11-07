@@ -1,20 +1,22 @@
-
 package interfaz;
 
 /**
+ * Ésta Interfaz permite obervar la ayuda de la aplicacion, que consiste en
+ * observar el manual de usuario
  *
- * @author gusta
+ * @author Carlos Toro, Gustavo Salgado y Laura Rúa
+ * @version 1.0
  */
 public class Ayuda extends javax.swing.JFrame {
 
     /**
-     * Creates new form Ventana
+     * Constructor de la ventana
      */
     public Ayuda() {
         initComponents();
         setLocationRelativeTo(null);
         setTitle(".:: Manual de Usuario - Uso Calculadora Proposicional ::.");
-        
+
         menuManual.setSelectionRow(1);
     }
 
@@ -81,57 +83,25 @@ public class Ayuda extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void menuManualValueChanged(javax.swing.event.TreeSelectionEvent evt) {//GEN-FIRST:event_menuManualValueChanged
-        
-        String menu = evt.getPath().getLastPathComponent().toString();
-        
-        if ("Ventana Principal".equalsIgnoreCase(menu)){
-           lAyuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/ayuda/principal.jpeg")));
-       }else if ("Ingreso Fórmula".equalsIgnoreCase(menu)){
-           lAyuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/ayuda/formula.jpeg")));
-       }else if ("Satisfacibilidad".equalsIgnoreCase(menu)){
-           lAyuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/ayuda/demo.png")));
-       }else if ("Tautología".equalsIgnoreCase(menu)){
-           lAyuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/ayuda/tautologia.jpeg")));
-       }
-        
-    }//GEN-LAST:event_menuManualValueChanged
-
     /**
-     * @param args the command line arguments
+     * Evento que permite seleccionar de un arbol de opciones
+     * @param evt el nombre del evento
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Ayuda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Ayuda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Ayuda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Ayuda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
+    private void menuManualValueChanged(javax.swing.event.TreeSelectionEvent evt) {//GEN-FIRST:event_menuManualValueChanged
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Ayuda().setVisible(true);
-            }
-        });
-    }
+        String menu = evt.getPath().getLastPathComponent().toString();
+
+        if ("Ventana Principal".equalsIgnoreCase(menu)) {
+            lAyuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/ayuda/principal.jpeg")));
+        } else if ("Ingreso Fórmula".equalsIgnoreCase(menu)) {
+            lAyuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/ayuda/formula.jpeg")));
+        } else if ("Satisfacibilidad".equalsIgnoreCase(menu)) {
+            lAyuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/ayuda/demo.png")));
+        } else if ("Tautología".equalsIgnoreCase(menu)) {
+            lAyuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/ayuda/tautologia.jpeg")));
+        }
+
+    }//GEN-LAST:event_menuManualValueChanged
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;

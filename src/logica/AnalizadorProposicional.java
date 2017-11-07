@@ -1,13 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package logica;
 
 /**
+ * La clase Analizador proposicional que permite crear el arbol
  *
- * @author gusta
+ * @author Carlos Toro, Gustavo Salgado y Laura Rúa
+ * @version 1.0
  */
 public class AnalizadorProposicional {
 
@@ -32,6 +30,12 @@ public class AnalizadorProposicional {
         return true;
     }
 
+    /**
+     * Metodo que crea el arbol
+     * @param molecula de la formula
+     * @return el nodo con la molecula
+     * @throws Exception 
+     */
     public Nodo crearArbolSintactico(String molecula) throws Exception {
         nodoArbolS = new Nodo(molecula);
         return nodoArbolS;

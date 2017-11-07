@@ -1,15 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package logica;
 
 import java.util.ArrayList;
 
 /**
+* La clase Parser realiza el analisis de la formula
  *
- * @author gusta
+ * @author Carlos Toro, Gustavo Salgado y Laura Rúa
+ * @version 1.0
  */
 public class Parser {
 
@@ -197,10 +194,10 @@ public class Parser {
     }
 
     /**
-     *
-     * @param cadena
-     * @param nuevo
-     * @return
+     * Metodo que permite ingresar la formula
+     * @param cadena la cadena donde esta la formula
+     * @param nuevo la nueva parte de la formula
+     * @return la cadena con la formula completa
      */
     public static String ingresar(String cadena, String nuevo) {
         String actual = "";
@@ -234,9 +231,9 @@ public class Parser {
     }
 
     /**
-     *
-     * @param aux
-     * @return
+     * Metodo que determinada si la formula esta bien formada
+     * @param aux el arraylist de la formula
+     * @return true si la formula esta bien formada o false si no lo esa+ta
      */
     public static boolean bienFormada(ArrayList<String> aux) {
         boolean v = false;
@@ -246,6 +243,10 @@ public class Parser {
         return v;
     }
 
+    /**
+     * Metodo que determina los literales de la formula
+     * @param formulas larraylist de la formula
+     */
     public static void literales(ArrayList<String> formulas) {
         for (int i = 0; i < formulas.size(); i++) {
             String cadena = formulas.get(i);

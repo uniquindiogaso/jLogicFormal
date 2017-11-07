@@ -13,13 +13,15 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
 /**
+* Clase principal que inicia la aplicacion
  *
- * @author gusta
+ * @author Carlos Toro, Gustavo Salgado y Laura Rúa
+ * @version 1.0
  */
 public class JLogicFormal {
 
     /**
-     * @param args the command line arguments
+     * Metodo main que inicia la aplicacion
      */
     public static void main(String[] args) {
            SwingUtilities.invokeLater(new Runnable() {

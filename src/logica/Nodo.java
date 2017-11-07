@@ -19,12 +19,17 @@ import javax.swing.JPanel;
 import sun.awt.image.codec.JPEGImageEncoderImpl;
 
 /**
- * 
- * @author gusta
+ * La clase Nodo que genera cada rama del arbol
+ *
+ * @author Carlos Toro, Gustavo Salgado y Laura Rúa
+ * @version 1.0
  * @see http://www.java2s.com/Code/Java/Advanced-Graphics/Tree.htm
  */
 public class Nodo extends JPanel {
 
+    /**
+     * Arraylist de las subformulas
+     */
     ArrayList<String> subFormulas = new ArrayList<>();
 
     /**
@@ -64,6 +69,11 @@ public class Nodo extends JPanel {
     Color color = Color.GREEN;
     private boolean entro = false;
 
+    /**
+     * Metodo que crea el nodo del arbol
+     * @param molecula
+     * @throws Exception 
+     */
     public Nodo(String molecula) throws Exception {
         valor = molecula;
         nodoIzq = nodoDer = null;
@@ -121,10 +131,18 @@ public class Nodo extends JPanel {
         return '0';
     }
 
+    /**
+     * Metodo get del arraylist de subformulas
+     * @return 
+     */
     public ArrayList<String> getSubFormulas() {
         return subFormulas;
     }
 
+    /**
+     * Metodo set del arraylist de subformulas
+     * @param subFormulas 
+     */
     public void setSubFormulas(ArrayList<String> subFormulas) {
         this.subFormulas = subFormulas;
     }
@@ -142,6 +160,10 @@ public class Nodo extends JPanel {
         return false;
     }
 
+    /**
+     * Metodo que genera el arbol
+     * @throws Exception 
+     */
     public void generarArbol() throws Exception {
 
         String izquierda;
@@ -217,6 +239,17 @@ public class Nodo extends JPanel {
         }
     }
 
+    /**
+     * Metodo que dibuja el arbol
+     * @param g varible del graphics
+     * @param act nodo del arbol
+     * @param x ubicacion en x
+     * @param y ubicacion en y
+     * @param x2 ubicacion de la linea en x
+     * @param y2 ubicacion de la linea en y
+     * @param p panel del arbol
+     * @param colorP color del arbol
+     */
     public void dibujarArbolSintactico(Graphics g, Nodo act, int x, int y, int x2, int y2, JPanel p, Color colorP) {
 
         if (colorP != null) {
@@ -249,6 +282,16 @@ public class Nodo extends JPanel {
         }
     }
 
+    /**
+     * Metodo que identifica la subformula a dibujar
+     * @param act el nodo del arbol
+     * @param x ubicacion en x
+     * @param y ubicacion en y
+     * @param x2 ubicacion de la linea en x
+     * @param y2 ubicacion de la linea en y
+     * @param p el panel del arbol
+     * @param colorP el color del arbol
+     */
     public void dibujarSubformula(Nodo act, int x, int y, int x2, int y2, JPanel p, Color colorP) {
 
         Graphics2D g = (Graphics2D) p.getGraphics();
@@ -336,11 +379,14 @@ public class Nodo extends JPanel {
                 dibujarSubformula(act.getNodoDer(), (x) + (anchoX(act.altura())), y + 100, x, y, p, color);
             }
 
-         
-
         }
     }
 
+    /**
+     * Metodo que identifica el ancho
+     * @param n numero que ubica en ancho
+     * @return el valor en pixeles
+     */
     public int anchoX(int n) {
 
         if (n == 6) {
@@ -368,6 +414,9 @@ public class Nodo extends JPanel {
         return valor;
     }
 
+    /**
+     * Metodo que guarda el arbol
+     */
     private void pruebaGuardado() {
         try {
             BufferedImage img = new BufferedImage(100, 100, BufferedImage.TYPE_INT_ARGB);
