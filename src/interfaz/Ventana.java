@@ -855,7 +855,8 @@ public class Ventana extends javax.swing.JFrame {
             @Override
             public void keyTyped(KeyEvent e) {
                 int c = e.getKeyChar();
-                if (c < 97 || c > 122) {
+                //System.out.println("Tecla presionada " + c);
+                if (c < 112 || c > 122) {
                     e.consume();
                 }
             }
