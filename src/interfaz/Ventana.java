@@ -876,7 +876,7 @@ public class Ventana extends javax.swing.JFrame {
             Parser.literales(formulas);
             Parser.construirTabla();
 
-            if (Parser.getAtomos().size() >= 2) {
+            if (Parser.getAtomos().size() >= 5) {
                 boolean sa = Parser.verSatisfacibilidad(Parser.getTabla());
                 if (sa) {
                     estad[3] = "Es satisfacible";
