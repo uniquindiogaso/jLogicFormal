@@ -972,16 +972,16 @@ public class Ventana extends javax.swing.JFrame {
             System.out.println("pArbolSintactico.getHeight() " + jPanel2.getHeight());
             if (sintactico == false) {
                 arbolS.dibujarSubformula(arbolS,
-                        jPanel2.getWidth() / 2, jPanel2.getHeight() - 242,
-                        jPanel2.getWidth() / 2, jPanel2.getHeight() - 242,
+                        jPanel2.getWidth() / 2, jPanel2.getHeight() - 420,
+                        jPanel2.getWidth() / 2, jPanel2.getHeight() - 420,
                         jPanel2, Color.GREEN);
 
                 System.out.println("arbol " + arbolS);
 
             } else if (sintactico == true) {
                 arbolS.dibujarArbolSintactico(jPanel2.getGraphics(), arbolS,
-                        jPanel2.getWidth() / 2, jPanel2.getHeight() - 242,
-                        jPanel2.getWidth() / 2, jPanel2.getHeight() - 242,
+                        jPanel2.getWidth() / 2, jPanel2.getHeight() - 420,
+                        jPanel2.getWidth() / 2, jPanel2.getHeight() - 420,
                         jPanel2, Color.GREEN);
 
             }
